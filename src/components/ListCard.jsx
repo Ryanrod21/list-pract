@@ -1,18 +1,31 @@
 import EditList from './EditList';
+import './ListCard.css'
 
-function ListCard({ onList, onRemove }) {
+function ListCard({ onList, onRemove, quantity }) {
+
+
   const listCard =
     onList.length === 0 ? (
-      <li>No items here</li>
+      <h2 className='noItems'>No items here</h2>
     ) : (
       onList.map((item, index) => (
-        <li key={index}>
-          {item} <EditList index={index} onRemove={onRemove} onList={onList} />
-        </li>
-      ))
+        <div  className='cardList'>
+          <li className='nameList' key={index}> {item.split(' ')
+            .map(word => word.charAt(0)
+            .toUpperCase() + word
+            .slice(1))
+            .join(' ')} 
+            ({quantity})
+          </li>
+          <div className='cardEditDelete'>
+            <EditList onList={onList} />
+            <button className='deleteBtn' onClick={() => onRemove(index)}>Delete</button>
+          </div> 
+        </div>
+      )) 
     );
 
-  return <div>{listCard}</div>;
+  return <div className='allCard'>{listCard}</div>;
 }
 
 export default ListCard;

@@ -19,7 +19,6 @@ function EditList({ index, onRemove, onList }) {
         )}
       </div>
       <button onClick={onHandleEdit}>Edit</button>
-      <button onClick={() => onRemove(index)}>Delete</button>
     </div>
   );
 }
