@@ -1,19 +1,18 @@
 import { useState } from 'react';
 import './CreateList.css';
 
-function CreateList({ onCreate, onQuantity}) {
+function CreateList({ onCreate }) {
   const [itemText, setItem] = useState('');
-  const [quantity, setQuantity] = useState('')
+  const [quantity, setQuantity] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (itemText === ''){
+    if (itemText === '') {
       return;
     }
-      onCreate(itemText.trim());
-      setItem('');
-      setQuantity(1);
-
+    onCreate({ 'list-item': itemText.trim(), 'list-quantity': quantity });
+    setItem('');
+    setQuantity('');
   };
 
   const handleChange = (e) => {
@@ -21,21 +20,25 @@ function CreateList({ onCreate, onQuantity}) {
   };
 
   const handleQuantityChange = (event) => {
-    setQuantity(Number(event.target.value));
-    console.log(setQuantity)
-  }
+    const newQuantity = event.target.value;
+    setQuantity(newQuantity);
+
+    console.log(quantity);
+  };
 
   const quantityOptions = [...Array(5).keys()].map((num) => (
-    <option  key={num + 1} value={num + 1}>
+    <option key={num} value={num + 1}>
       {num + 1}
     </option>
-  )
-)
+  ));
 
   return (
-    <div className='createListCard'>
-      <form className='createForm' onSubmit={handleSubmit}>
-        <div><h3>Enter Your Items Here</h3></div>
+    <div className="createListCard">
+      <form className="createForm" onSubmit={handleSubmit}>
+        <div>
+          <h3>Enter Your Items Here</h3>
+        </div>
+
         <input
           type="text"
           value={itemText}
@@ -44,14 +47,13 @@ function CreateList({ onCreate, onQuantity}) {
         ></input>
 
         <label>Quantity:</label>
-        <select
-        value={quantity}
-        onChange={handleQuantityChange}
-        >
+        <select value={quantity} onChange={handleQuantityChange}>
           {quantityOptions}
         </select>
 
-        <button className='createBtn' type="submit">Add List</button>
+        <button className="createBtn" type="submit">
+          Add List
+        </button>
       </form>
     </div>
   );
