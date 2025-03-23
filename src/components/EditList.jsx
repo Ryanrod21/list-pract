@@ -1,25 +1,26 @@
 import { useState } from 'react';
 
-function EditList({ index, onRemove, onList }) {
-  const [edit, onEdit] = useState(false);
+function EditList({ index, onList }) {
+  //Haven't added this part to code due it breaking
 
-  const onHandleEdit = (e) => {
-    onEdit(!edit);
+  const [title, setEdit] = useState(onList);
+
+  const handleChange = (event) => {
+    setEdit(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log('New title', title);
   };
 
   return (
-    <div>
-      <div>
-        {edit ? (
-          <form>
-            <input type="text"></input>
-          </form>
-        ) : (
-          ''
-        )}
-      </div>
-      <button onClick={onHandleEdit}>Edit</button>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>Title</label>
+      <input value={title} onChange={handleChange} />
+      <button>Save</button>
+    </form>
   );
 }
 

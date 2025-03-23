@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import EditList from './EditList';
 import './ListCard.css';
 
-function ListCard({ onList, onRemove, quantity }) {
+function ListCard({ onList, onRemove, onEditList }) {
+  // const onHandleEdit = () => {
+  //   <EditList onList={onList} />;
+  // };
+
+  // Since adding the ID. It can't read length or split in the code below
+  // Don't know if I shoud redo the bottom
   const listCard =
     onList.length === 0 ? (
       <h2 className="noItems">No items here</h2>
@@ -16,7 +23,7 @@ function ListCard({ onList, onRemove, quantity }) {
             ({item['list-quantity']})
           </li>
           <div className="cardEditDelete">
-            <EditList onList={onList} />
+            <button onClick={() => onHandleEdit(index)}>Edit </button>
             <button className="deleteBtn" onClick={() => onRemove(index)}>
               Delete
             </button>

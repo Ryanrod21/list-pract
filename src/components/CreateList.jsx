@@ -3,7 +3,7 @@ import './CreateList.css';
 
 function CreateList({ onCreate }) {
   const [itemText, setItem] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [quantity, setQuantity] = useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ function CreateList({ onCreate }) {
     }
     onCreate({ 'list-item': itemText.trim(), 'list-quantity': quantity });
     setItem('');
-    setQuantity('');
+    setQuantity(1);
   };
 
   const handleChange = (e) => {
@@ -20,14 +20,12 @@ function CreateList({ onCreate }) {
   };
 
   const handleQuantityChange = (event) => {
-    const newQuantity = event.target.value;
-    setQuantity(newQuantity);
-
+    setQuantity(Number(event.target.value));
     console.log(quantity);
   };
 
   const quantityOptions = [...Array(5).keys()].map((num) => (
-    <option key={num} value={num + 1}>
+    <option key={num + 1} value={num + 1}>
       {num + 1}
     </option>
   ));
