@@ -18,8 +18,12 @@ function App() {
 
   // Added the ID random here
 
-  const addList = (title) => {
-    setList([...list, { id: Math.round(Math.random() * 9999), title }]);
+  const addList = ({ item, quantity }) => {
+    setList([
+      ...list,
+      { id: Math.round(Math.random() * 9999), item, quantity },
+    ]);
+    console.log('updated', list);
   };
 
   const handleRemove = (removeList) => {

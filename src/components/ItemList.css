@@ -1,10 +1,9 @@
-.allItemList{
-    text-align: center;
-
+.allItemList {
+  text-align: center;
 }
 
-/* .allCards{
-    column-count: 2;
-    column-gap: 25px;
-    
-} */
+.allCards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

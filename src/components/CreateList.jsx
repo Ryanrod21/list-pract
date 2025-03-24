@@ -10,7 +10,7 @@ function CreateList({ onCreate }) {
     if (itemText === '') {
       return;
     }
-    onCreate({ 'list-item': itemText.trim(), 'list-quantity': quantity });
+    onCreate({ item: itemText.trim(), quantity });
     setItem('');
     setQuantity(1);
   };
@@ -21,12 +21,11 @@ function CreateList({ onCreate }) {
 
   const handleQuantityChange = (event) => {
     setQuantity(Number(event.target.value));
-    console.log(quantity);
   };
 
-  const quantityOptions = [...Array(5).keys()].map((num) => (
-    <option key={num + 1} value={num + 1}>
-      {num + 1}
+  const quantityOptions = [...Array(5)].map((_, index) => (
+    <option key={index + 1} value={index + 1}>
+      {index + 1}
     </option>
   ));
 
