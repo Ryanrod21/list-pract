@@ -16,7 +16,10 @@ function CreateList({ onCreate }) {
   };
 
   const handleChange = (e) => {
-    setItem(e.target.value);
+    const value = e.target.value;
+    if (/^[A-Za-z\s]*$/.test(value)) {
+      setItem(value);
+    }
   };
 
   const handleQuantityChange = (event) => {

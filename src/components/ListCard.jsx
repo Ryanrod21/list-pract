@@ -10,7 +10,7 @@ function ListCard({ list, onRemove, onEditList }) {
   };
 
   const handleEditClick = () => {
-    setEdit(!showEdit.id, showEdit.quantity);
+    setEdit(!showEdit.id);
   };
 
   const handleSubmit = (id, newItem, newQuantity) => {
