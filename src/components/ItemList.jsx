@@ -13,10 +13,17 @@ function ItemList({ onList, onRemove, onEditList }) {
     );
   });
 
+  let content;
+  if (onList.length === 0) {
+    content = <h2>No Item Entered</h2>;
+  } else {
+    content = renderList;
+  }
+
   return (
     <div className="allItemList">
       <h1>List of Items</h1>
-      <div className="allCards">{renderList}</div>
+      <div className="allCards">{content}</div>
     </div>
   );
 }

@@ -18,24 +18,20 @@ function ListCard({ list, onRemove, onEditList }) {
     onEditList(id, newItem);
   };
 
-  // const listCard =
-  //   list.length === 0 ? (
-  //     <h2>No Items Entered</h2>
-  //   ) : (
-  //     <div key={list.id}>
-  //       <li className="nameList">
-  //         {list.item
-  //           .split(' ')
-  //           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))}
-  //         ({list.quantity})
-  //       </li>
-  //     </div>
-  //   );
-
-  let content = <h3>{list.item}</h3>;
+  let content = (
+    <div key={list.id}>
+      <li className="nameList">
+        {list.item
+          .split(' ')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))}
+        ({list.quantity})
+      </li>
+    </div>
+  );
   if (showEdit) {
     content = <EditList onSubmit={handleSubmit} list={list} />;
   }
+
   return (
     <div className="allCard">
       <div className="cardList">
