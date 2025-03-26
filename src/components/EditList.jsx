@@ -1,9 +1,7 @@
 import { useState } from 'react';
 
-function EditList({ index, onList }) {
-  //Haven't added this part to code due it breaking
-
-  const [title, setEdit] = useState(onList);
+function EditList({ list, onSubmit }) {
+  const [item, setEdit] = useState(list.item);
 
   const handleChange = (event) => {
     setEdit(event.target.value);
@@ -11,14 +9,15 @@ function EditList({ index, onList }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    onSubmit(list.id, item);
 
-    console.log('New title', title);
+    console.log(list.id, item);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>Title</label>
-      <input value={title} onChange={handleChange} />
+      <input value={item} onChange={handleChange} />
       <button>Save</button>
     </form>
   );

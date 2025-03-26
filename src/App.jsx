@@ -5,29 +5,31 @@ import ItemList from './components/ItemList';
 function App() {
   const [list, setList] = useState([]);
 
-  const onEditList = (item, newItem) => {
-    const updateItem = list.map((lists) => {
-      if (list === lists) {
-        return { ...list, title: newItem };
+  const onEditList = (id, newItem) => {
+    const updateItem = list.map((edit) => {
+      if (edit.id === id) {
+        return { ...edit, item: newItem };
       }
-      return item;
+      return edit;
     });
 
     setList(updateItem);
   };
 
-  // Added the ID random here
-
   const addList = ({ item, quantity }) => {
-    setList([
+    const updateItem = [
       ...list,
       { id: Math.round(Math.random() * 9999), item, quantity },
-    ]);
-    console.log('updated', list);
+    ];
+
+    setList(updateItem);
   };
 
-  const handleRemove = (removeList) => {
-    setList(list.filter((name, index) => index !== removeList));
+  const handleRemove = (id) => {
+    const updateList = list.filter((item) => {
+      return item.id !== id;
+    });
+    setList(updateList);
   };
 
   return (

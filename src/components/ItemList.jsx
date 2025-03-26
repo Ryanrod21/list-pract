@@ -2,11 +2,11 @@ import ListCard from './ListCard';
 import './ItemList.css';
 
 function ItemList({ onList, onRemove, onEditList }) {
-  const renderList = onList.map((list) => {
+  const renderList = onList.map((lists) => {
     return (
       <ListCard
-        key={list.id}
-        list={list}
+        key={lists.id}
+        list={lists}
         onRemove={onRemove}
         onEditList={onEditList}
       />
