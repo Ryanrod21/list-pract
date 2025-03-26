@@ -10,12 +10,12 @@ function ListCard({ list, onRemove, onEditList }) {
   };
 
   const handleEditClick = () => {
-    setEdit(!showEdit.id);
+    setEdit(!showEdit.id, showEdit.quantity);
   };
 
-  const handleSubmit = (id, newItem) => {
+  const handleSubmit = (id, newItem, newQuantity) => {
     setEdit(false);
-    onEditList(id, newItem);
+    onEditList(id, newItem, newQuantity);
   };
 
   let content = (
@@ -36,9 +36,9 @@ function ListCard({ list, onRemove, onEditList }) {
     <div className="allCard">
       <div className="cardList">
         {content}
-        <div>
+        <div className='cardEditDelete'>
           <button onClick={handleEditClick}> Edit </button>
-          <button onClick={handleDeleteClick}>Delete</button>
+          <button className='deleteBtn' onClick={handleDeleteClick}>Delete</button>
         </div>
       </div>
     </div>

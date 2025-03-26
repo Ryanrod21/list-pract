@@ -5,10 +5,10 @@ import ItemList from './components/ItemList';
 function App() {
   const [list, setList] = useState([]);
 
-  const onEditList = (id, newItem) => {
+  const onEditList = (id, newItem, newQuantity) => {
     const updateItem = list.map((edit) => {
       if (edit.id === id) {
-        return { ...edit, item: newItem };
+        return { ...edit, item: newItem, quantity: newQuantity};
       }
       return edit;
     });
@@ -23,6 +23,7 @@ function App() {
     ];
 
     setList(updateItem);
+    console.log(list)
   };
 
   const handleRemove = (id) => {
